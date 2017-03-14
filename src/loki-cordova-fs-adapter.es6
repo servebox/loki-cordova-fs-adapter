@@ -104,9 +104,10 @@ class LokiCordovaFSAdapter {
                 dir.getFile(fileName, {create: true}, handleSuccess, handleError);
             },
             (err) => {
-                throw new LokiCordovaFSAdapterError(
+                console.error(TAG, "error getting file", err);
+                handleError(new LokiCordovaFSAdapterError(
                     "Unable to resolve local file system URL" + JSON.stringify(err)
-                );
+                ));
             }
         );
     }
